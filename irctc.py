@@ -38,26 +38,25 @@ ifCheck="if(document.getElementById('addPassengerForm:psdetail:%d:%s')!=null)\
 {document.getElementById('addPassengerForm:psdetail:%d:%s').value='%s'}"
 ifFocus="if(document.getElementById('%s')!=null){document.getElementById('%s').focus();document.getElementById('%s').select();}"
 
-js="javascript:function%20E(){";
+js=r"javascript:function%20E(){";
 
-
+psgn = "document.getElementById('addPassengerForm:psdetail:tb').rows[%d].cells[1].children[0]"
+psgnIf="if(" + psgn + "!=null){" + psgn + ".value='%s'}"
+#    js+=ifCheck%(i, "psgnName", i, "psgnName", ld[0]);
 for i in range(len(splittedData)):
     ld=splittedData[i];#localData
-    
-    js+=ifCheck%(i, "psgnName", i, "psgnName", ld[0]);
+    js+=psgnIf%(i, i, ld[0]);
     js+=ifCheck%(i, "psgnAge", i, "psgnAge", ld[1]);
     js+=ifCheck%(i, "psgnGender", i, "psgnGender", ld[2]);
     js+=ifCheck%(i, "berthChoice", i, "berthChoice", ld[3]);
     js+=ifCheck%(i, "idCardType", i, "idCardType", ld[4]);
     js+=ifCheck%(i, "foodChoice", i, "foodChoice", ld[5]);
     js+=ifCheck%(i, "idCardNumber", i, "idCardNumber", ld[6]);
-    
 js+=basicIf%("addPassengerForm:mobileNo", "addPassengerForm:mobileNo", mobileNumber);
 js+=basicCheck%("addPassengerForm:autoUpgrade", "addPassengerForm:autoUpgrade", consAutoUpgrade);
 js+=ifFocus%("j_captcha", "j_captcha", "j_captcha")
-
 js+="}E()"
-
+print ( js );
 html='<html>\n\t\
 <Title>IRCTC Bookmark</Title>\
 <body>\n\t\t\
