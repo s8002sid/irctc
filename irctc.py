@@ -56,7 +56,7 @@ js+=basicIf%("addPassengerForm:mobileNo", "addPassengerForm:mobileNo", mobileNum
 js+=basicCheck%("addPassengerForm:autoUpgrade", "addPassengerForm:autoUpgrade", consAutoUpgrade);
 js+=ifFocus%("j_captcha", "j_captcha", "j_captcha")
 js+="}E()"
-print ( js );
+#print ( js );
 html='<html>\n\t\
 <Title>IRCTC Bookmark</Title>\
 <body>\n\t\t\
