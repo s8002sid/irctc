@@ -35,7 +35,7 @@ basicCheck="if(document.getElementById('%s')!=null){document.getElementById('%s'
 ifCheck="if(document.getElementById('addPassengerForm:psdetail:%d:%s')!=null)\
 {document.getElementById('addPassengerForm:psdetail:%d:%s').value='%s'}"
 ifFocus="if(document.getElementById('%s')!=null){document.getElementById('%s').focus();document.getElementById('%s').select();}"
-
+seniorCitizen="if(document.getElementById('addPassengerForm:psdetail:%d:concessionOpt')!=null){document.getElementById('addPassengerForm:psdetail:%d:concessionOpt').checked='%s'}"
 js=r"javascript:function%20E(){";
 
 psgn = "document.getElementById('addPassengerForm:psdetail:tb').rows[%d].cells[1].children[0]"
@@ -48,6 +48,8 @@ for i in range(len(splittedData)):
     js+=ifCheck%(i, "psgnGender", i, "psgnGender", ld[2]);
     js+=ifCheck%(i, "berthChoice", i, "berthChoice", ld[3]);
     js+=ifCheck%(i, "foodChoice", i, "foodChoice", ld[4]);
+    if (ld[5].find('TRUE') != -1):
+        js+=seniorCitizen%(i,i,ld[5]);
 js+=basicIf%("addPassengerForm:mobileNo", "addPassengerForm:mobileNo", mobileNumber);
 js+=basicCheck%("addPassengerForm:autoUpgrade", "addPassengerForm:autoUpgrade", consAutoUpgrade);
 js+=ifFocus%("j_captcha", "j_captcha", "j_captcha")
