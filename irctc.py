@@ -3,19 +3,17 @@ import os;
 #Input
 dataFile="data.csv"
 #Default validation data
-#0-> name, 1-> age, 2-> sex, 3-> birthpref, 4-> idcardtype,
-#5-> food, 6->idCardNumber, 7-> senior
+#0-> name, 1-> age, 2-> sex, 3-> birthpref, 4-> food,
+#7-> senior
 nameLen=16
 ageList=[13,110]
 sexList=['M', 'F'];
 birthPrefList=['UB', 'LB', 'MB', 'SU', 'SL'];
-idCardTypeList=['DRIVING_LICENSE','PASSPORT,PANCARD','VOTER_ICARD','GOVT_ICARD',
-                'STUDENT_ICARD','BANK_PASSBOOK','CREDIT_CARD','UNIQUE_ICARD'];
 foorList=['V', 'N'];
 seniorList=['TRUE', 'FALSE'];
 
 
-mobileNumber="9582581552"
+mobileNumber="8882915057"
 consAutoUpgrade="true"
 
 mobileNumber=input('Mobile Number: ');
@@ -49,14 +47,12 @@ for i in range(len(splittedData)):
     js+=ifCheck%(i, "psgnAge", i, "psgnAge", ld[1]);
     js+=ifCheck%(i, "psgnGender", i, "psgnGender", ld[2]);
     js+=ifCheck%(i, "berthChoice", i, "berthChoice", ld[3]);
-    js+=ifCheck%(i, "idCardType", i, "idCardType", ld[4]);
-    js+=ifCheck%(i, "foodChoice", i, "foodChoice", ld[5]);
-    js+=ifCheck%(i, "idCardNumber", i, "idCardNumber", ld[6]);
+    js+=ifCheck%(i, "foodChoice", i, "foodChoice", ld[4]);
 js+=basicIf%("addPassengerForm:mobileNo", "addPassengerForm:mobileNo", mobileNumber);
 js+=basicCheck%("addPassengerForm:autoUpgrade", "addPassengerForm:autoUpgrade", consAutoUpgrade);
 js+=ifFocus%("j_captcha", "j_captcha", "j_captcha")
 js+="}E()"
-#print ( js );
+
 html='<html>\n\t\
 <Title>IRCTC Bookmark</Title>\
 <body>\n\t\t\
